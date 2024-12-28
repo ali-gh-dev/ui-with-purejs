@@ -62,3 +62,23 @@ li > a {
 .nav-menu ul li:first-child {
     margin-right: 10px;
 }
+
+.header-btn{
+    position: absolute;
+    left: 0;
+    background-color: #ffb606;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.header-btn span{
+    margin-right: 1rem;
+}
