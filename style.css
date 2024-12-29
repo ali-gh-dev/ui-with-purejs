@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+/* ==================== variables ==================== */
+
+:root {
+    --clr-1: #ffb606
+}
+
+/* ==================== header / navbar menu ==================== */
+
 .global-header {
     position: relative;
     top: 0;
@@ -63,10 +71,25 @@ li > a {
     margin-right: 10px;
 }
 
-.header-btn{
+/*
+===================================
+another way for animation border-bottom
+===================================
+*/
+
+/*.nav-menu li {*/
+/*    transition: all 0.3s linear;*/
+/*    border-bottom: 3px solid transparent;*/
+/*}*/
+
+/*.nav-menu li:hover {*/
+/*    border-bottom: 3px solid var(--clr-1);*/
+/*}*/
+
+.header-btn {
     position: absolute;
     left: 0;
-    background-color: #ffb606;
+    background-color: var(--clr-1);
     color: white;
     border-radius: 0.5rem;
     padding: 0.5rem;
@@ -79,6 +102,19 @@ li > a {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
-.header-btn span{
+.header-btn span {
     margin-right: 1rem;
+}
+
+/*================================*/
+
+.highlight {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--clr-1);
+    height: 4px;
+    z-index: 1000;
+    transition: 0.3s all linear;
 }
