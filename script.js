@@ -14,5 +14,13 @@ menuItems.forEach(item => {
 })
 
 
-// dropdown
+// dropdown (sub-nav)
+const courses = document.getElementById('courses')
+const dropdown = document.querySelector('.sub-nav')
 
+courses.addEventListener('mouseover',()=>{
+    dropdown.style.display = 'flex'
+})
+dropdown.addEventListener('mouseleave',()=>{
+    dropdown.style.display = 'none'
+})
