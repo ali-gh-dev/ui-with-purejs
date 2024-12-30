@@ -12,3 +12,7 @@ menuItems.forEach(item => {
         span.style.transform = `translate(${left}px,${bottom}px)`
     })
 })
+
+
+// dropdown
+

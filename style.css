@@ -7,7 +7,8 @@
 /* ==================== variables ==================== */
 
 :root {
-    --clr-1: #ffb606
+    --clr-1: #ffb606;
+    --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
 /* ==================== header / navbar menu ==================== */
@@ -18,7 +19,7 @@
     width: 100%;
     background-color: #ffffff;
     z-index: 999;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-shadow: var(--box-shadow);
     transition: transform 0.5s ease-in-out;
 }
 
@@ -99,14 +100,13 @@ another way for animation border-bottom
     cursor: pointer;
     font-weight: bold;
     font-size: 0.9rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-shadow: var(--box-shadow);
 }
 
 .header-btn span {
     margin-right: 1rem;
 }
 
-/*================================*/
 
 .highlight {
     display: block;
@@ -118,3 +118,81 @@ another way for animation border-bottom
     z-index: 1000;
     transition: 0.3s all linear;
 }
+
+
+/* ==================== dropdown ==================== */
+
+.sub-nav {
+    background-color: #f7f7f7;
+    border-radius: 0.3rem;
+    box-shadow: var(--box-shadow);
+    /*display: none;*/
+    position: absolute;
+    padding: 1rem;
+    top: 100%;
+    width: 30rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub-nav::after{
+    content: '';
+    bottom: 100%;
+    left: 140px;
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 105px;
+    pointer-events: none;
+    border: solid rgba(252,252,252,0);
+    border-bottom-color: #f7f7f7;
+    border-width: 20px;
+    border-radius: 2px;
+}
+
+.sub-nav-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 50%;
+}
+
+.sub-nav-box {
+    background-color: #ffffff;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.box-icon {
+    font-size: 2rem;
+    background-color: #252225;
+    color: white;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#icon-1 {
+    background-color: #7e3ef3;
+}
+#icon-2 {
+    background-color: #fe4242;
+}
+#icon-3 {
+    background-color: #2ee1f9;
+}
+#icon-4 {
+    background-color: #2ef968;
+}
+
