@@ -3,6 +3,7 @@ const courses = document.getElementById('courses')
 const dropdown = document.querySelector('.sub-nav')
 const loginBtn = document.querySelector('.header-btn')
 const popup = document.querySelector('.popup')
+const closePopupBtn = document.querySelector('.popup i')
 
 
 // animation border-bottom (for header items)
@@ -32,4 +33,11 @@ dropdown.addEventListener('mouseleave', () => {
 loginBtn.addEventListener('click', () => {
     popup.style.display = 'flex'
     popup.style.opacity = '1'
+    document.body.style.overflow = 'hidden'
+})
+
+closePopupBtn.addEventListener('click',()=>{
+    popup.style.display = 'none'
+    popup.style.opacity = '0'
+    document.body.style.overflow = 'visible'
 })
