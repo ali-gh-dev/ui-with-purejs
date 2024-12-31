@@ -8,6 +8,7 @@
 
 :root {
     --clr-1: #ffb606;
+    --clr-white : #f7f7f7;
     --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
@@ -91,7 +92,7 @@ another way for animation border-bottom
     position: absolute;
     left: 0;
     background-color: var(--clr-1);
-    color: white;
+    color: var(--clr-white);
     border-radius: 0.5rem;
     padding: 0.5rem;
     display: flex;
@@ -123,7 +124,7 @@ another way for animation border-bottom
 /* ==================== dropdown ==================== */
 
 .sub-nav {
-    background-color: #f7f7f7;
+    background-color: var(--clr-white);
     border-radius: 0.3rem;
     box-shadow: var(--box-shadow);
     display: none;
@@ -146,7 +147,7 @@ another way for animation border-bottom
     right: 105px;
     pointer-events: none;
     border: solid rgba(252, 252, 252, 0);
-    border-bottom-color: #f7f7f7;
+    border-bottom-color: var(--clr-white);
     border-width: 20px;
     border-radius: 2px;
 }
@@ -159,7 +160,7 @@ another way for animation border-bottom
 }
 
 .sub-nav-box {
-    background-color: #ffffff;
+    background-color: var(--clr-white);
     text-decoration: none;
     color: black;
     display: flex;
@@ -174,7 +175,7 @@ another way for animation border-bottom
 .box-icon {
     font-size: 2rem;
     background-color: #252225;
-    color: white;
+    color: var(--clr-white);
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -200,3 +201,33 @@ another way for animation border-bottom
     background-color: #2ef968;
 }
 
+/* ==================== popup ==================== */
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1002;
+    transition: all 0.3s linear;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr-white);
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.login-form input {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
