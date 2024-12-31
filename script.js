@@ -3,6 +3,7 @@ const courses = document.getElementById('courses')
 const dropdown = document.querySelector('.sub-nav')
 const loginBtn = document.querySelector('.header-btn')
 const popup = document.querySelector('.popup')
+const popupContent = document.querySelector('.popup-content')
 const closePopupBtn = document.querySelector('.popup i')
 
 
@@ -31,13 +32,24 @@ dropdown.addEventListener('mouseleave', () => {
 
 // login popup(modal)
 loginBtn.addEventListener('click', () => {
+    // showing popup
     popup.style.display = 'flex'
     popup.style.opacity = '1'
     document.body.style.overflow = 'hidden'
 })
 
-closePopupBtn.addEventListener('click',()=>{
+closePopupBtn.addEventListener('click', () => {
+    // hiding popup
     popup.style.display = 'none'
     popup.style.opacity = '0'
     document.body.style.overflow = 'visible'
+})
+
+popup.addEventListener('click', (ev) => {
+    if (!popupContent.contains(ev.target)) {
+        // click is outside the "popupContent" and we will hide popup
+        popup.style.display = 'none'
+        popup.style.opacity = '0'
+        document.body.style.overflow = 'visible'
+    }
 })
