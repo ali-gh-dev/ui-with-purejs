@@ -8,7 +8,7 @@
 
 :root {
     --clr-1: #ffb606;
-    --clr-white : #f7f7f7;
+    --clr-white: #f7f7f7;
     --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
@@ -219,21 +219,85 @@ another way for animation border-bottom
     transition: all 0.3s linear;
 }
 
-.popup-content{
+.popup-content {
     min-width: 50%;
-
 }
 
 .popup-header {
     background-color: var(--clr-white);
-    border: 1px solid #f0f0f0;
+    border-bottom: 2px solid #b6b6b6;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.popup-header i{
+
+.popup-header i {
     color: red;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+#login-form {
+    background-color: var(--clr-white);
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    padding: 1rem 0;
+}
+
+.form-control {
+    padding: 1rem 2rem;
+    position: relative;
+    margin-bottom: 1rem;
+
+}
+
+.form-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 0.3rem;
+    direction: ltr;
+    display: block;
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    margin: 0.5rem 0;
+
+}
+
+.form-control i {
+    position: absolute;
+    top: 56px;
+    left: 40px;
+    visibility: hidden;
+}
+
+.form-control small {
+    position: absolute;
+    right: 2rem;
+    visibility: hidden;
+}
+
+.form-control.success input {
+    border-color: #2ecc71;
+}
+
+.form-control.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.form-control.success small {
+    color: #2ecc71;
+}
+
+.form-control.error input {
+    border-color: #e74c3c;
+}
+
+.form-control.error i.fa-exclamation-circle,
+.form-control.error small {
+    color: #e74c3c;
+    visibility: visible;
 }
