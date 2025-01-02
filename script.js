@@ -5,6 +5,35 @@ const loginBtn = document.querySelector('.header-btn')
 const popup = document.querySelector('.popup')
 const popupContent = document.querySelector('.popup-content')
 const closePopupBtn = document.querySelector('.popup i')
+const loginForm = document.querySelector('#login-form')
+
+
+// Functions
+
+function showError(element, errorText) {
+    element.parentElement.classList.add('error')
+    element.parentElement.querySelector('small').innerText = errorText
+}
+
+function validateLoginForm() {
+    const emailField = document.getElementById('email')
+    const passwordField = document.getElementById('password')
+    const email = emailField.value.trim()
+    const password = passwordField.value.trim()
+    if (email.length === 0) {
+        showError(emailField, "ایمیل نباید خالی باشد")
+    } else {
+        emailField.parentElement.classList.remove('error')
+        emailField.parentElement.classList.add('success')
+    }
+    if (password.length === 0) {
+        showError(passwordField, "رمز عبور نباید خالی باشد")
+    } else if (password.length < 6) {
+        showError(passwordField, "رمز عبور باید حداقل 6 کاراکتر باشد")
+    } else {
+        passwordField.parentElement.className = "form-control success"
+    }
+}
 
 
 // animation border-bottom (for header items)
@@ -52,4 +81,9 @@ popup.addEventListener('click', (ev) => {
         popup.style.opacity = '0'
         document.body.style.overflow = 'visible'
     }
+})
+
+loginForm.addEventListener('submit', (ev) => {
+    ev.preventDefault()
+    validateLoginForm()
 })

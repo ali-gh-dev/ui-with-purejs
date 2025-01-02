@@ -301,3 +301,16 @@ another way for animation border-bottom
     color: #e74c3c;
     visibility: visible;
 }
+
+#login-form button{
+    width: 100%;
+    background-color: var(--clr-1);
+    color: var(--clr-white);
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0.75rem 0;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
