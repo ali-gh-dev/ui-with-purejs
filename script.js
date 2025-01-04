@@ -13,6 +13,7 @@ const loginForm = document.querySelector('#login-form')
 function showError(element, errorText) {
     element.parentElement.classList.add('error')
     element.parentElement.querySelector('small').innerText = errorText
+    return false
 }
 
 function validateLoginForm() {
@@ -20,8 +21,11 @@ function validateLoginForm() {
     const passwordField = document.getElementById('password')
     const email = emailField.value.trim()
     const password = passwordField.value.trim()
+    const emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     if (email.length === 0) {
         showError(emailField, "ایمیل نباید خالی باشد")
+    } else if (!emailPattern.test(email)) {
+        showError(emailField, "ایمیل نامعتبر است")
     } else {
         emailField.parentElement.classList.remove('error')
         emailField.parentElement.classList.add('success')
