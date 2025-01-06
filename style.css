@@ -120,6 +120,17 @@ another way for animation border-bottom
     transition: 0.3s all linear;
 }
 
+.hamburger-menu{
+    position: absolute;
+    left: 0;
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+}
+ .hamburger-menu .close-menu{
+     color: red;
+     display: none;
+ }
 
 /* ==================== dropdown ==================== */
 
@@ -313,4 +324,18 @@ another way for animation border-bottom
     outline: none;
     border-radius: 0.3rem;
     cursor: pointer;
+}
+
+/* ==================== responsive ==================== */
+
+@media screen and (max-width: 768px) {
+    .global-header .nav-menu{
+        display: none;
+    }
+    .header-btn{
+        display: none;
+    }
+    .hamburger-menu{
+        display: block;
+    }
 }
