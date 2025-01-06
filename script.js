@@ -6,6 +6,7 @@ const popup = document.querySelector('.popup')
 const popupContent = document.querySelector('.popup-content')
 const closePopupBtn = document.querySelector('.popup i')
 const loginForm = document.querySelector('#login-form')
+const recaptcha = document.querySelector('.g-recaptcha')
 
 
 // Functions
@@ -14,6 +15,17 @@ function showError(element, errorText) {
     element.parentElement.classList.add('error')
     element.parentElement.querySelector('small').innerText = errorText
     return false
+}
+
+function checkRecaptcha() {
+    let response = grecaptcha.getResponse()
+    if (response.length === 0) {
+        showError(recaptcha, 'من ربات نیستم را تیک بزنید')
+    } else {
+        recaptcha.parentElement.querySelector('small').innerText = ''
+        popup.style.display = 'none'
+        loginBtn.querySelector('span').innerText = 'حساب کاربری'
+    }
 }
 
 function validateLoginForm() {
@@ -37,6 +49,14 @@ function validateLoginForm() {
     } else {
         passwordField.parentElement.className = "form-control success"
     }
+
+    let condition1 = emailField.parentElement.classList.contains('success')
+    let condition2 = passwordField.parentElement.classList.contains('success')
+    if(condition1 && condition2){
+        checkRecaptcha()
+    }
+
+
 }
 
 
@@ -66,9 +86,12 @@ dropdown.addEventListener('mouseleave', () => {
 // login popup(modal)
 loginBtn.addEventListener('click', () => {
     // showing popup
-    popup.style.display = 'flex'
-    popup.style.opacity = '1'
-    document.body.style.overflow = 'hidden'
+    if (loginBtn.querySelector('span').innerText === 'ورود و ثبت نام') {
+        popup.style.display = 'flex'
+        popup.style.opacity = '1'
+        document.body.style.overflow = 'hidden'
+    }
+
 })
 
 closePopupBtn.addEventListener('click', () => {
