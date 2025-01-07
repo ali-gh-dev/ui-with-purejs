@@ -1,3 +1,4 @@
+const globalHeader = document.querySelector('.global-header')
 const menuItems = document.querySelectorAll('.nav-menu li')
 const courses = document.getElementById('courses')
 const dropdown = document.querySelector('.sub-nav')
@@ -7,6 +8,10 @@ const popupContent = document.querySelector('.popup-content')
 const closePopupBtn = document.querySelector('.popup i')
 const loginForm = document.querySelector('#login-form')
 const recaptcha = document.querySelector('.g-recaptcha')
+const hamburgerIcon = document.querySelector('.hamburger-menu .open-menu')
+const hamburgerCloseIcon = document.querySelector('.hamburger-menu .close-menu')
+const navbar = document.querySelector('.nav')
+const container = document.querySelector('.container')
 
 
 // Functions
@@ -52,7 +57,7 @@ function validateLoginForm() {
 
     let condition1 = emailField.parentElement.classList.contains('success')
     let condition2 = passwordField.parentElement.classList.contains('success')
-    if(condition1 && condition2){
+    if (condition1 && condition2) {
         checkRecaptcha()
     }
 
@@ -113,4 +118,24 @@ popup.addEventListener('click', (ev) => {
 loginForm.addEventListener('submit', (ev) => {
     ev.preventDefault()
     validateLoginForm()
+})
+
+
+// navbar
+hamburgerIcon.addEventListener('click', () => {
+    navbar.classList.add('active')
+    hamburgerIcon.style.display = 'none'
+    hamburgerCloseIcon.style.display = 'block'
+    const navbarWidth = window.getComputedStyle(navbar).getPropertyValue('width')
+    globalHeader.style.transform = `translateX(${navbarWidth})`
+    container.style.transform = `translateX(${navbarWidth})`
+    document.body.style.overflow = 'hidden'
+
+})
+hamburgerCloseIcon.addEventListener('click',()=>{
+    navbar.classList.remove('active')
+    hamburgerIcon.style.display = 'block'
+    hamburgerCloseIcon.style.display = 'none'
+    globalHeader.style.transform = 'translateX(0)'
+    container.style.transform = 'translateX(0)'
 })

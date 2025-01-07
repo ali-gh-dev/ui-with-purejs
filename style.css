@@ -21,7 +21,7 @@
     background-color: #ffffff;
     z-index: 999;
     box-shadow: var(--box-shadow);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.4s ease-in-out;
 }
 
 .header-row {
@@ -131,6 +131,32 @@ another way for animation border-bottom
      color: red;
      display: none;
  }
+
+ .nav{
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 250px;
+     height: 100vh;
+     background-color: #212529;
+     padding: 2rem;
+     transform: translateX(-100%);
+     transition: 0.4s all ease-in-out;
+ }
+ .nav.active{
+     transform: translateX(0);
+ }
+
+ /* ==================== container ==================== */
+.container{
+    width: 100%;
+    transition: 0.4s transform ease-in-out;
+}
+.container img{
+    width: 100%;
+    /*height: 100vh;*/
+    object-fit: cover;
+}
 
 /* ==================== dropdown ==================== */
 
@@ -329,6 +355,7 @@ another way for animation border-bottom
 /* ==================== responsive ==================== */
 
 @media screen and (max-width: 768px) {
+
     .global-header .nav-menu{
         display: none;
     }
