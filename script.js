@@ -11,6 +11,7 @@ const recaptcha = document.querySelector('.g-recaptcha')
 const hamburgerIcon = document.querySelector('.hamburger-menu .open-menu')
 const hamburgerCloseIcon = document.querySelector('.hamburger-menu .close-menu')
 const navbar = document.querySelector('.nav')
+const navbarDropdown = document.querySelector('.menu-item-has-children')
 const container = document.querySelector('.container')
 
 
@@ -61,6 +62,22 @@ function validateLoginForm() {
         checkRecaptcha()
     }
 
+
+}
+
+function toggleNavbarDropdown(){
+    const iElement = this.querySelector('i')
+    const ulElement = this.querySelector('ul')
+
+    if (iElement.className === "fa fa-angle-left"){
+        iElement.className = "fa fa-angle-down"
+    }else{
+        iElement.className = "fa fa-angle-left"
+    }
+
+    ulElement.classList.toggle('active')
+    this.classList.toggle('active')
+    iElement.setAttribute('style','position:absolute;left:0;')
 
 }
 
@@ -138,4 +155,6 @@ hamburgerCloseIcon.addEventListener('click',()=>{
     hamburgerCloseIcon.style.display = 'none'
     globalHeader.style.transform = 'translateX(0)'
     container.style.transform = 'translateX(0)'
+    document.body.style.overflow = 'visible'
 })
+navbarDropdown.addEventListener('click',toggleNavbarDropdown)
