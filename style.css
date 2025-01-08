@@ -12,6 +12,64 @@
     --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
+/* ==================== top bar ==================== */
+.top-bar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    background: #000000;
+    transition: transform 0.4s ease-in-out;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.top-bar-row {
+    height: 2.5rem;
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    direction: ltr;
+}
+
+.top-bar-items, .top-bar-items-mobile {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 22px;
+}
+
+.top-bar-items ul li:first-child {
+    position: relative;
+}
+
+.top-bar-items ul li:not(:first-child),
+.top-bar-items-mobile ul li {
+    text-align: center;
+    line-height: 80px;
+    display: inline-block;
+}
+
+.mini-cart-opener i {
+    color: rgba(255, 255, 255, 0.6);
+
+}
+
+.mini-cart-opener span {
+    color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    left: 14px;
+    bottom: 26px;
+}
+
+.top-bar-items-mobile {
+    display: none;
+}
+
+.top-bar-items ul {
+    direction: ltr;
+
+}
+
 /* ==================== header / navbar menu ==================== */
 
 .global-header {
@@ -120,34 +178,36 @@ another way for animation border-bottom
     transition: 0.3s all linear;
 }
 
-.hamburger-menu{
+.hamburger-menu {
     position: absolute;
     left: 0;
     font-size: 2rem;
     display: none;
     cursor: pointer;
 }
- .hamburger-menu .close-menu{
-     color: red;
-     display: none;
- }
 
- .nav{
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 250px;
-     height: 100vh;
-     background-color: #212529;
-     padding: 2rem;
-     transform: translateX(-100%);
-     transition: 0.4s all ease-in-out;
- }
- .nav.active{
-     transform: translateX(0);
- }
+.hamburger-menu .close-menu {
+    color: red;
+    display: none;
+}
 
- .nav ul{
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #212529;
+    padding: 2rem;
+    transform: translateX(-100%);
+    transition: 0.4s all ease-in-out;
+}
+
+.nav.active {
+    transform: translateX(0);
+}
+
+.nav ul {
     width: 100%;
     color: #fff;
     display: flex;
@@ -155,14 +215,17 @@ another way for animation border-bottom
     justify-content: center;
     align-items: center;
 }
-.nav ul li{
+
+.nav ul li {
     margin-right: 0;
 }
-.nav ul li:not(:first-child){
+
+.nav ul li:not(:first-child) {
     width: 100%;
     font-size: 18px;
 }
-.nav ul li a{
+
+.nav ul li a {
     color: #fff;
 }
 
@@ -174,13 +237,15 @@ another way for animation border-bottom
     outline: none;
 }
 
-.search-form{
+.search-form {
     position: relative;
 }
+
 .search-form .search-submit {
     left: 0;
     right: auto;
 }
+
 .search-form .search-submit {
     position: absolute;
     top: -5px;
@@ -200,14 +265,17 @@ another way for animation border-bottom
     border: none;
     outline: 0;
 }
-.search-form .search-submit i{
+
+.search-form .search-submit i {
     color: #6c757d;
     font-size: 16px;
 }
+
 .off-canvas-cart {
     padding: 12px 20px 24px;
 
 }
+
 .off-canvas-cart .cart-icon-link {
     color: #fff;
     display: -webkit-box;
@@ -221,11 +289,13 @@ another way for animation border-bottom
     position: relative;
     text-decoration: none;
 }
+
 .off-canvas-cart .cart-icon-link .bag-icon svg {
     width: 53px;
     height: 53px;
     fill: #fff;
 }
+
 .off-canvas-cart .cart-icon-link .studiare-cart-number {
     background-color: #1e83f0;
     min-width: 15px;
@@ -238,14 +308,17 @@ another way for animation border-bottom
     text-align: center;
     position: absolute;
 }
-.menu-item-has-children{
+
+.menu-item-has-children {
     display: flex;
     justify-content: space-between;
 }
-.menu-item-has-children.active{
+
+.menu-item-has-children.active {
     display: block;
 }
-.menu-item-has-children ul{
+
+.menu-item-has-children ul {
     padding-right: 1em;
     padding-left: 0;
     border-right: 1px solid #333940;
@@ -254,24 +327,28 @@ another way for animation border-bottom
     opacity: 0;
     transition: all 0.3s ease-in-out;
 }
-.menu-item-has-children i{
+
+.menu-item-has-children i {
     font-size: 24px;
 }
-.menu-item-has-children ul.active{
+
+.menu-item-has-children ul.active {
     display: block !important;
     opacity: 1;
 }
-.menu-item-has-children ul li{
+
+.menu-item-has-children ul li {
     padding: 5px;
     font-size: 13px !important;
 }
 
- /* ==================== container ==================== */
-.container{
+/* ==================== container ==================== */
+.container {
     width: 100%;
     transition: 0.4s transform ease-in-out;
 }
-.container img{
+
+.container img {
     width: 100%;
     /*height: 100vh;*/
     object-fit: cover;
@@ -458,7 +535,7 @@ another way for animation border-bottom
     visibility: visible;
 }
 
-#login-form button{
+#login-form button {
     width: 100%;
     background-color: var(--clr-1);
     color: var(--clr-white);
@@ -475,13 +552,23 @@ another way for animation border-bottom
 
 @media screen and (max-width: 768px) {
 
-    .global-header .nav-menu{
+    .global-header .nav-menu {
         display: none;
     }
-    .header-btn{
+
+    .header-btn {
         display: none;
     }
-    .hamburger-menu{
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    .top-bar-items {
+        display: none;
+    }
+
+    .top-bar-items-mobile {
         display: block;
     }
 }

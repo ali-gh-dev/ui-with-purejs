@@ -13,6 +13,7 @@ const hamburgerCloseIcon = document.querySelector('.hamburger-menu .close-menu')
 const navbar = document.querySelector('.nav')
 const navbarDropdown = document.querySelector('.menu-item-has-children')
 const container = document.querySelector('.container')
+const userIcon = document.querySelector('.fa-user-circle')
 
 
 // Functions
@@ -65,19 +66,19 @@ function validateLoginForm() {
 
 }
 
-function toggleNavbarDropdown(){
+function toggleNavbarDropdown() {
     const iElement = this.querySelector('i')
     const ulElement = this.querySelector('ul')
 
-    if (iElement.className === "fa fa-angle-left"){
+    if (iElement.className === "fa fa-angle-left") {
         iElement.className = "fa fa-angle-down"
-    }else{
+    } else {
         iElement.className = "fa fa-angle-left"
     }
 
     ulElement.classList.toggle('active')
     this.classList.toggle('active')
-    iElement.setAttribute('style','position:absolute;left:0;')
+    iElement.setAttribute('style', 'position:absolute;left:0;')
 
 }
 
@@ -149,7 +150,7 @@ hamburgerIcon.addEventListener('click', () => {
     document.body.style.overflow = 'hidden'
 
 })
-hamburgerCloseIcon.addEventListener('click',()=>{
+hamburgerCloseIcon.addEventListener('click', () => {
     navbar.classList.remove('active')
     hamburgerIcon.style.display = 'block'
     hamburgerCloseIcon.style.display = 'none'
@@ -157,4 +158,12 @@ hamburgerCloseIcon.addEventListener('click',()=>{
     container.style.transform = 'translateX(0)'
     document.body.style.overflow = 'visible'
 })
-navbarDropdown.addEventListener('click',toggleNavbarDropdown)
+navbarDropdown.addEventListener('click', toggleNavbarDropdown)
+
+//top bar
+userIcon.addEventListener('click', () => {
+    // showing popup
+    popup.style.display = 'flex'
+    popup.style.opacity = '1'
+    document.body.style.overflow = 'hidden'
+})
