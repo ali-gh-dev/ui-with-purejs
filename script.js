@@ -167,3 +167,12 @@ userIcon.addEventListener('click', () => {
     popup.style.opacity = '1'
     document.body.style.overflow = 'hidden'
 })
+
+//sticky nav
+window.addEventListener('scroll', () => {
+    if (window.scrollY >= globalHeader.offsetHeight){
+        globalHeader.style.position = 'fixed'
+    }else{
+        globalHeader.style.position = 'relative'
+    }
+})
