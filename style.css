@@ -348,6 +348,50 @@ another way for animation border-bottom
     transition: 0.4s transform ease-in-out;
 }
 
+.main-pic-container {
+    width: 100%;
+    position: relative;
+}
+
+.countdown-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    width: 80%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #ffffff;
+    text-shadow: 2px 2px midnightblue;
+}
+
+.countdown {
+    display: flex;
+    direction: ltr;
+    margin-top: 10px;
+}
+
+.countdown div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown div span {
+    font-weight: bold;
+    font-size: 28px;
+}
+.countdown .big-text {
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: 1;
+    margin: 0 2rem;
+}
+
 .container img {
     width: 100%;
     /*height: 100vh;*/
@@ -570,5 +614,19 @@ another way for animation border-bottom
 
     .top-bar-items-mobile {
         display: block;
+    }
+    .countdown-container {
+        width: 90%;
+        height: 50%;
+    }
+    .countdown-container h1{
+        font-size: 1rem;
+    }
+    .countdown-container .big-text {
+        font-size: 1rem;
+    }
+    .countdown-container .countdown span{
+        font-weight: bold;
+        font-size: 14px;
     }
 }
