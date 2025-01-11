@@ -620,13 +620,13 @@ another way for animation border-bottom
         height: 50%;
     }
     .countdown-container h1{
-        font-size: 1rem;
+        font-size: 1.25rem;
     }
     .countdown-container .big-text {
-        font-size: 1rem;
+        font-size: 1.25rem;
     }
     .countdown-container .countdown span{
         font-weight: bold;
-        font-size: 14px;
+        font-size: 1.25rem;
     }
 }

@@ -14,6 +14,10 @@ const navbar = document.querySelector('.nav')
 const navbarDropdown = document.querySelector('.menu-item-has-children')
 const container = document.querySelector('.container')
 const userIcon = document.querySelector('.fa-user-circle')
+const daysElement = document.getElementById('days')
+const hoursElement = document.getElementById('hours')
+const minutesElement = document.getElementById('minutes')
+const secondsElement = document.getElementById('seconds')
 
 
 // Functions
@@ -170,9 +174,29 @@ userIcon.addEventListener('click', () => {
 
 //sticky nav
 window.addEventListener('scroll', () => {
-    if (window.scrollY >= globalHeader.offsetHeight){
+    if (window.scrollY >= globalHeader.offsetHeight) {
         globalHeader.style.position = 'fixed'
-    }else{
+    } else {
         globalHeader.style.position = 'relative'
     }
 })
+
+// countdown
+function countdown() {
+    const publishDate = new Date("7 Feb 2025")
+    const currentDate = new Date()
+    const totalTime = publishDate - currentDate
+    const days = Math.floor(totalTime / (24 * 3600 * 1000))
+    const hours = Math.floor(totalTime / (3600 * 1000)) % 24
+    const minutes = Math.floor(totalTime / (60 * 1000)) % 60
+    const seconds = Math.floor(totalTime / 1000) % 60
+    daysElement.innerText = days
+    hoursElement.innerText = hours
+    minutesElement.innerText = minutes
+    secondsElement.innerText = seconds
+}
+
+countdown()
+setInterval(countdown,1000)
+
+
