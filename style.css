@@ -40,6 +40,7 @@
 
 .top-bar-items ul li:first-child {
     position: relative;
+    cursor: pointer;
 }
 
 .top-bar-items ul li:not(:first-child),
@@ -47,6 +48,7 @@
     text-align: center;
     line-height: 80px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .mini-cart-opener i {
@@ -93,10 +95,17 @@
     opacity: 1;
     transition: 0.5s ease;
 }
+.header-row.disable{
+    display: none;
+    opacity: 0;
+}
 
 .search-row {
-    /*display: none;*/
+    display: none;
     opacity: 1;
+}
+.search-row.enable{
+    display: flex;
 }
 
 .search-row .search-form {

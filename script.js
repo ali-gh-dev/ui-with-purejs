@@ -13,11 +13,15 @@ const hamburgerCloseIcon = document.querySelector('.hamburger-menu .close-menu')
 const navbar = document.querySelector('.nav')
 const navbarDropdown = document.querySelector('.menu-item-has-children')
 const container = document.querySelector('.container')
+const topBar = document.querySelector('.top-bar')
 const userIcon = document.querySelector('.fa-user-circle')
 const daysElement = document.getElementById('days')
 const hoursElement = document.getElementById('hours')
 const minutesElement = document.getElementById('minutes')
 const secondsElement = document.getElementById('seconds')
+const searchIcon = document.querySelector('.top-bar-items i.fa-search ')
+const headerRow = document.querySelector('.header-row')
+const searchRow = document.querySelector('.search-row')
 
 
 // Functions
@@ -151,6 +155,7 @@ hamburgerIcon.addEventListener('click', () => {
     const navbarWidth = window.getComputedStyle(navbar).getPropertyValue('width')
     globalHeader.style.transform = `translateX(${navbarWidth})`
     container.style.transform = `translateX(${navbarWidth})`
+    topBar.style.transform = `translateX(${navbarWidth})`
     document.body.style.overflow = 'hidden'
 
 })
@@ -160,6 +165,7 @@ hamburgerCloseIcon.addEventListener('click', () => {
     hamburgerCloseIcon.style.display = 'none'
     globalHeader.style.transform = 'translateX(0)'
     container.style.transform = 'translateX(0)'
+    topBar.style.transform = 'translateX(0)'
     document.body.style.overflow = 'visible'
 })
 navbarDropdown.addEventListener('click', toggleNavbarDropdown)
@@ -197,6 +203,21 @@ function countdown() {
 }
 
 countdown()
-setInterval(countdown,1000)
+setInterval(countdown, 1000)
+
+// voice search
+searchIcon.addEventListener('click', toggleSearchIcon)
+
+function toggleSearchIcon() {
+    if (searchIcon.className === "fa fa-search") {
+        searchIcon.className = "fa fa-times"
+        headerRow.classList.add('disable')
+        searchRow.classList.add('enable')
+    }else{
+        searchIcon.className = "fa fa-search"
+        headerRow.classList.remove('disable')
+        searchRow.classList.remove('enable')
+    }
 
 
+}
