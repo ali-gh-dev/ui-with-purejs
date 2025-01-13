@@ -22,6 +22,7 @@ const secondsElement = document.getElementById('seconds')
 const searchIcon = document.querySelector('.top-bar-items i.fa-search ')
 const headerRow = document.querySelector('.header-row')
 const searchRow = document.querySelector('.search-row')
+const searchInput = document.querySelector('.search-row .search-input')
 
 
 // Functions
@@ -213,11 +214,29 @@ function toggleSearchIcon() {
         searchIcon.className = "fa fa-times"
         headerRow.classList.add('disable')
         searchRow.classList.add('enable')
-    }else{
+        // this part works on chrome browser
+        searchRecognition()
+    } else {
         searchIcon.className = "fa fa-search"
         headerRow.classList.remove('disable')
         searchRow.classList.remove('enable')
     }
+}
 
-
+function searchRecognition() {
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    const recognition = new SpeechRecognition()
+    recognition.lang = "fa-IR"
+    recognition.interimResults = true
+    recognition.addEventListener('result', ev => {
+        const transcript = Array.from(ev.results)
+            .map(item => item[0])
+            .map(item => item.transcript)
+            .join("")
+        if (ev.results[0].isFinal) {
+            searchInput.value = transcript
+        }
+    })
+    recognition.addEventListener('end', recognition.start)
+    recognition.start()
 }
