@@ -215,7 +215,7 @@ function toggleSearchIcon() {
         headerRow.classList.add('disable')
         searchRow.classList.add('enable')
         // this part works on chrome browser
-        searchRecognition()
+        // searchRecognition()
     } else {
         searchIcon.className = "fa fa-search"
         headerRow.classList.remove('disable')

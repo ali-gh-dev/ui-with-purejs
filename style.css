@@ -95,7 +95,8 @@
     opacity: 1;
     transition: 0.5s ease;
 }
-.header-row.disable{
+
+.header-row.disable {
     display: none;
     opacity: 0;
 }
@@ -104,7 +105,8 @@
     display: none;
     opacity: 1;
 }
-.search-row.enable{
+
+.search-row.enable {
     display: flex;
 }
 
@@ -113,14 +115,16 @@
     width: 100%;
     height: 100%;
 }
-.search-row .search-form input[type="search"]{
+
+.search-row .search-form input[type="search"] {
     width: 100%;
     height: 100%;
     border: none;
     outline: none;
     font-size: 18px;
 }
-.search-row .search-form button[type="submit"]{
+
+.search-row .search-form button[type="submit"] {
     position: absolute;
     top: 5%;
     left: 10px;
@@ -130,6 +134,7 @@
     padding: 21px;
     background-color: #f8f9fa;
 }
+
 .global-logo img {
     width: 4rem;
     border-radius: 50%;
@@ -435,6 +440,35 @@ another way for animation border-bottom
     object-fit: cover;
 }
 
+.featured-course {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.featured-course .separator {
+    min-width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 2rem;
+
+}
+
+.featured-course .separator span {
+    width: 30%;
+    height: 2px;
+    background-color: #c4c4c4;
+}
+
+.featured-course .separator h4 {
+    text-align: center;
+    font-size: 1rem;
+}
+
 /* ==================== dropdown ==================== */
 
 .sub-nav {
@@ -669,5 +703,9 @@ another way for animation border-bottom
     .countdown-container .countdown span {
         font-weight: bold;
         font-size: 1.25rem;
+    }
+
+    .featured-course .separator h4 {
+        font-size: 0.75rem;
     }
 }
