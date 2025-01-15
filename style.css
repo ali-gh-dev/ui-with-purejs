@@ -469,6 +469,63 @@ another way for animation border-bottom
     font-size: 1rem;
 }
 
+.featured-course-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.course {
+    width: 22%;
+    margin: 5px auto;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.75rem;
+    transition: all 0.5s ease;
+}
+.course .course-thumbnail{
+    position: relative;
+
+}
+.course .course-thumbnail img{
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 0.7rem;
+    border-top-left-radius: 0.7rem;
+    vertical-align: middle;
+}
+
+.course .course-thumbnail .cdb-video-icon ,
+.course .course-thumbnail .add-to-cart {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    background-color: rgba(0,0,0,0.37);
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 1rem;
+    padding: 0.7rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+}
+.course .course-thumbnail .add-to-cart{
+    top: 60px;
+}
+.course .course-thumbnail .cdb-video-icon:hover ,
+.course .course-thumbnail .add-to-cart:hover {
+    background-color: white !important;
+    color: rgba(0,0,0,0.37) !important;
+}
 /* ==================== dropdown ==================== */
 
 .sub-nav {
