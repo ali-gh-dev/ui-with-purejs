@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* ==================== variables ==================== */
 
 :root {
@@ -479,6 +483,7 @@ another way for animation border-bottom
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 .course {
     width: 22%;
     margin: 5px auto;
@@ -487,11 +492,13 @@ another way for animation border-bottom
     border-radius: 0.75rem;
     transition: all 0.5s ease;
 }
-.course .course-thumbnail{
+
+.course .course-thumbnail {
     position: relative;
 
 }
-.course .course-thumbnail img{
+
+.course .course-thumbnail img {
     width: 100%;
     height: auto;
     border-top-right-radius: 0.7rem;
@@ -499,12 +506,12 @@ another way for animation border-bottom
     vertical-align: middle;
 }
 
-.course .course-thumbnail .cdb-video-icon ,
+.course .course-thumbnail .cdb-video-icon,
 .course .course-thumbnail .add-to-cart {
     position: absolute;
     top: 13px;
     right: 13px;
-    background-color: rgba(0,0,0,0.37);
+    background-color: rgba(0, 0, 0, 0.37);
     width: 40px;
     height: 40px;
     border: 0;
@@ -518,13 +525,53 @@ another way for animation border-bottom
     text-decoration: none;
 
 }
-.course .course-thumbnail .add-to-cart{
+
+.course .course-thumbnail .add-to-cart {
     top: 60px;
 }
-.course .course-thumbnail .cdb-video-icon:hover ,
+
+.course .course-thumbnail .cdb-video-icon:hover,
 .course .course-thumbnail .add-to-cart:hover {
     background-color: white !important;
-    color: rgba(0,0,0,0.37) !important;
+    color: rgba(0, 0, 0, 0.37) !important;
+}
+
+.course-content-main {
+    overflow: hidden;
+}
+
+.course-content-main .course-title {
+    line-height: 1.5;
+    height: 43px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    padding: 12px;
+}
+
+.course-content-main .course-title a,
+.teacher-box i,
+.teacher-box a {
+    color: #777777;
+}
+.course-rating-teacher{
+    overflow: hidden;
+    position: relative;
+    display: block;
+    font-size: 0.9rem;
+    padding-left: 12px;
+    padding-bottom: 12px;
+}
+.teacher-box{
+    float: left;
+}
+.course-bottom-content{
+    border-top: 2px solid #e5e5e5;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #777777;
 }
 /* ==================== dropdown ==================== */
 
