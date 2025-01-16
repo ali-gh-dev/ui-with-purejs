@@ -446,10 +446,16 @@ another way for animation border-bottom
 
 .featured-course {
     width: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transform: translateX(-120%);
+    transition: all 1s ease;
+}
+.featured-course.active {
+    display: flex;
+    transform: translateX(0);
 }
 
 .featured-course .separator {
@@ -543,7 +549,7 @@ another way for animation border-bottom
 .course-content-main .course-title {
     line-height: 1.5;
     height: 43px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     font-size: 1rem;
     padding: 12px;
 }
@@ -811,5 +817,16 @@ another way for animation border-bottom
 
     .featured-course .separator h4 {
         font-size: 0.75rem;
+    }
+    .course {
+        width: 45%;
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .course {
+        width: 80%;
+        margin-bottom: 2rem;
     }
 }
