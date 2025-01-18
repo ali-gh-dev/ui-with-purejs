@@ -778,6 +778,29 @@ another way for animation border-bottom
     cursor: pointer;
 }
 
+/* ==================== go to top ==================== */
+.go-to-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    background-color: #6c757d;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    position: fixed;
+    left: 1.5rem;
+    bottom: 3rem;
+}
+.go-to-top:hover {
+    cursor: pointer;
+}
+.go-to-top.active {
+    opacity: 1;
+}
+
+
 /* ==================== responsive ==================== */
 
 @media screen and (max-width: 768px) {

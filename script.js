@@ -25,6 +25,7 @@ const headerRow = document.querySelector('.header-row')
 const searchRow = document.querySelector('.search-row')
 const searchInput = document.querySelector('.search-row .search-input')
 const featuredCourse = document.querySelector('.featured-course')
+const goToTop = document.querySelector('.go-to-top')
 
 
 // Functions
@@ -70,9 +71,10 @@ function validateLoginForm() {
 
     let condition1 = emailField.parentElement.classList.contains('success')
     let condition2 = passwordField.parentElement.classList.contains('success')
-    if (condition1 && condition2) {
-        checkRecaptcha()
-    }
+    // i commented this part temporarily (for increasing speed)
+    // if (condition1 && condition2) {
+    //     checkRecaptcha()
+    // }
 
 
 }
@@ -181,7 +183,7 @@ userIcon.addEventListener('click', () => {
     document.body.style.overflow = 'hidden'
 })
 
-//sticky nav
+//sticky nav - feature courses - go to top
 window.addEventListener('scroll', () => {
     if (window.scrollY >= globalHeader.offsetHeight) {
         globalHeader.style.position = 'fixed'
@@ -189,9 +191,18 @@ window.addEventListener('scroll', () => {
         globalHeader.style.position = 'relative'
     }
 
-    const opa = window.getComputedStyle(featuredCourse).getPropertyValue('opacity')
-    if (window.scrollY > mainPic.scrollHeight / 2.5 && opa < 1) {
+    const featuredCourseOpacity = window.getComputedStyle(featuredCourse).getPropertyValue('opacity')
+    if (window.scrollY > mainPic.scrollHeight / 2.5 && featuredCourseOpacity < 1) {
         featuredCourse.classList.add('active')
+    }
+
+    const goToTopOpacity = window.getComputedStyle(goToTop).getPropertyValue('opacity')
+    if (window.scrollY > 300) {
+        if (goToTopOpacity < 1) {
+            goToTop.classList.add('active')
+        }
+    } else {
+        goToTop.classList.remove('active')
     }
 
 })
@@ -248,3 +259,8 @@ function searchRecognition() {
     recognition.addEventListener('end', recognition.start)
     recognition.start()
 }
+
+// go to top
+goToTop.addEventListener('click', () => {
+    window.scrollTo({top : 0 , behavior : 'smooth'})
+})
