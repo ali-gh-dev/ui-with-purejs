@@ -1,4 +1,5 @@
 const globalHeader = document.querySelector('.global-header')
+const mainPic = document.querySelector('.main-pic-container')
 const menuItems = document.querySelectorAll('.nav-menu li')
 const courses = document.getElementById('courses')
 const dropdown = document.querySelector('.sub-nav')
@@ -23,6 +24,7 @@ const searchIcon = document.querySelector('.top-bar-items i.fa-search ')
 const headerRow = document.querySelector('.header-row')
 const searchRow = document.querySelector('.search-row')
 const searchInput = document.querySelector('.search-row .search-input')
+const featuredCourse = document.querySelector('.featured-course')
 
 
 // Functions
@@ -186,6 +188,12 @@ window.addEventListener('scroll', () => {
     } else {
         globalHeader.style.position = 'relative'
     }
+
+    const opa = window.getComputedStyle(featuredCourse).getPropertyValue('opacity')
+    if (window.scrollY > mainPic.scrollHeight / 2.5 && opa < 1) {
+        featuredCourse.classList.add('active')
+    }
+
 })
 
 // countdown
