@@ -26,6 +26,9 @@ const searchRow = document.querySelector('.search-row')
 const searchInput = document.querySelector('.search-row .search-input')
 const featuredCourse = document.querySelector('.featured-course')
 const goToTop = document.querySelector('.go-to-top')
+const cartIcon = document.querySelector('a.mini-cart-opener')
+const shoppingCartBox = document.querySelector('.shopping-cart-box')
+
 
 
 // Functions
@@ -262,5 +265,10 @@ function searchRecognition() {
 
 // go to top
 goToTop.addEventListener('click', () => {
-    window.scrollTo({top : 0 , behavior : 'smooth'})
+    window.scrollTo({top: 0, behavior: 'smooth'})
+})
+
+// shopping cart
+cartIcon.addEventListener('click', () => {
+    shoppingCartBox.classList.toggle('active')
 })
