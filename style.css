@@ -454,6 +454,7 @@ another way for animation border-bottom
     transform: translateX(-120%);
     transition: all 1s ease;
 }
+
 .featured-course.active {
     opacity: 1;
     transform: translateX(0);
@@ -499,7 +500,8 @@ another way for animation border-bottom
     border-radius: 0.75rem;
     transition: all 0.5s ease;
 }
-.course:hover{
+
+.course:hover {
     cursor: pointer;
     transform: translateY(-10px);
 }
@@ -564,7 +566,8 @@ another way for animation border-bottom
 .teacher-box a {
     color: #777777;
 }
-.course-rating-teacher{
+
+.course-rating-teacher {
     overflow: hidden;
     position: relative;
     display: block;
@@ -572,10 +575,12 @@ another way for animation border-bottom
     padding-left: 12px;
     padding-bottom: 12px;
 }
-.teacher-box{
+
+.teacher-box {
     float: left;
 }
-.course-bottom-content{
+
+.course-bottom-content {
     border-top: 2px solid #e5e5e5;
     padding: 10px 20px;
     font-size: 0.9rem;
@@ -584,6 +589,7 @@ another way for animation border-bottom
     align-items: center;
     color: #777777;
 }
+
 /* ==================== dropdown ==================== */
 
 .sub-nav {
@@ -793,13 +799,47 @@ another way for animation border-bottom
     left: 1.5rem;
     bottom: 3rem;
 }
+
 .go-to-top:hover {
     cursor: pointer;
 }
+
 .go-to-top.active {
     opacity: 1;
 }
 
+/* ==================== shopping-cart-box ==================== */
+.shopping-cart-box {
+    background: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 32px;
+    left: -25px;
+    width: 300px;
+    padding: 16px;
+    z-index: 1500;
+    display: none;
+}
+
+.shopping-cart-box.active {
+    display: block;
+}
+
+.shopping-cart-box::after {
+    bottom: 100%;
+    left: 20px;
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    pointer-events: none;
+    border: solid transparent;
+    border-color: rgba(252, 252, 252, 0);
+    border-bottom-color: #f7f7f7;
+    border-width: 8px;
+    border-radius: 2px;
+}
 
 /* ==================== responsive ==================== */
 
@@ -846,17 +886,19 @@ another way for animation border-bottom
     .featured-course .separator h4 {
         font-size: 0.75rem;
     }
+
     .course {
         width: 45%;
         margin-bottom: 2rem;
     }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
     .featured-course {
         opacity: 1;
         transform: translateX(0);
     }
+
     .course {
         width: 80%;
         margin-bottom: 2rem;
