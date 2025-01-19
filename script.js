@@ -30,7 +30,6 @@ const cartIcon = document.querySelector('a.mini-cart-opener')
 const shoppingCartBox = document.querySelector('.shopping-cart-box')
 
 
-
 // Functions
 
 function showError(element, errorText) {
@@ -271,4 +270,18 @@ goToTop.addEventListener('click', () => {
 // shopping cart
 cartIcon.addEventListener('click', () => {
     shoppingCartBox.classList.toggle('active')
+    calculateTotalPrice()
+
 })
+
+function calculateTotalPrice() {
+    let sum = 0
+    const itemsPrices = shoppingCartBox.querySelectorAll('.item-price')
+    const shoppingCartTotal = shoppingCartBox.querySelector('.shopping-cart-total')
+
+    itemsPrices.forEach(item => {
+        sum += Number(item.innerText.match(/\d+/))
+    })
+    shoppingCartTotal.innerText = `${sum} تومان`
+
+}
