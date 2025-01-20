@@ -270,11 +270,11 @@ goToTop.addEventListener('click', () => {
 // shopping cart
 cartIcon.addEventListener('click', () => {
     shoppingCartBox.classList.toggle('active')
-    calculateTotalPrice()
-
+    updateCart()
 })
 
-function calculateTotalPrice() {
+function updateCart() {
+    // calculate total price
     let sum = 0
     const itemsPrices = shoppingCartBox.querySelectorAll('.item-price')
     const shoppingCartTotal = shoppingCartBox.querySelector('.shopping-cart-total')
@@ -284,4 +284,14 @@ function calculateTotalPrice() {
     })
     shoppingCartTotal.innerText = `${sum} تومان`
 
+    // update cart number
+    const cartNumber = topBar.querySelector('.cart-number')
+    const cartNumberMobile = topBar.querySelector('.top-bar-items-mobile .cart-number')
+    const cartNumberNav = navbar.querySelector('.studiare-cart-number')
+
+    cartNumber.innerText = itemsPrices.length
+    cartNumberMobile.innerText = itemsPrices.length
+    cartNumberNav.innerText = itemsPrices.length
 }
+
+updateCart()
