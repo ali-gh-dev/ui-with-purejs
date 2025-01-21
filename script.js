@@ -268,30 +268,80 @@ goToTop.addEventListener('click', () => {
 })
 
 // shopping cart
+
+const shoppingCartTotal = shoppingCartBox.querySelector('.shopping-cart-total')
+
+const addToCartIcons = document.querySelectorAll('.course .course-thumbnail a.add-to-cart')
+
 cartIcon.addEventListener('click', () => {
     shoppingCartBox.classList.toggle('active')
     updateCart()
 })
 
+
 function updateCart() {
+    let cartItemCloseIcons = shoppingCartBox.querySelectorAll('.shopping-cart-item i.fa-times')
+    const itemsPrices = shoppingCartBox.querySelectorAll('.item-price')
+    const cartNumber = topBar.querySelector('.cart-number')
+    const cartNumberMobile = topBar.querySelector('.top-bar-items-mobile .cart-number')
+    const cartNumberNav = navbar.querySelector('.studiare-cart-number')
+
+    // remove item by clicking x icon
+    cartItemCloseIcons.forEach(icon => {
+        icon.addEventListener('click', (ev) => {
+            ev.target.parentElement.remove()
+            updateCart()
+        })
+    })
+
     // calculate total price
     let sum = 0
-    const itemsPrices = shoppingCartBox.querySelectorAll('.item-price')
-    const shoppingCartTotal = shoppingCartBox.querySelector('.shopping-cart-total')
-
     itemsPrices.forEach(item => {
         sum += Number(item.innerText.match(/\d+/))
     })
     shoppingCartTotal.innerText = `${sum} تومان`
 
     // update cart number
-    const cartNumber = topBar.querySelector('.cart-number')
-    const cartNumberMobile = topBar.querySelector('.top-bar-items-mobile .cart-number')
-    const cartNumberNav = navbar.querySelector('.studiare-cart-number')
-
     cartNumber.innerText = itemsPrices.length
     cartNumberMobile.innerText = itemsPrices.length
     cartNumberNav.innerText = itemsPrices.length
+
+    // todo : use localStorage
 }
 
 updateCart()
+
+
+addToCartIcons.forEach(icon => {
+    icon.addEventListener('click', (ev) => {
+        //adding an item to cart
+        ev.preventDefault()
+        let currentCourse = ev.target.parentElement.parentElement.parentElement
+        addToCart(currentCourse)
+        updateCart()
+    })
+    // todo : use localStorage
+})
+
+function addToCart(course) {
+    const imageSrc = course.querySelector('img').src
+    const title = course.querySelector('.course-content .course-title a').innerText
+    let price = course.querySelector('.course-content .course-price').innerText
+    if (price === "رایگان") {
+        price = 0
+    } else {
+        price = Number(price)
+    }
+
+    const newCourse = document.createElement('div')
+    newCourse.className = 'shopping-cart-item'
+    newCourse.innerHTML = `
+                                <i class="fas fa-times"></i>
+                                <img src="${imageSrc}" alt="${title}">
+                                <div class="cart-item-content">
+                                    <span class="item-name">${title}</span>
+                                    <span class="item-price">${price} تومان</span>
+                                </div>
+    `
+    shoppingCartBox.querySelector('.shopping-cart-items').appendChild(newCourse)
+}
