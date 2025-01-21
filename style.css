@@ -451,11 +451,13 @@ another way for animation border-bottom
 .featured-course {
     width: 100%;
     display: flex;
-    opacity: 0;
+    /*opacity: 0;*/
+    opacity: 1;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transform: translateX(-120%);
+    /*transform: translateX(-120%);*/
+    transform: translateX(0);
     transition: all 1s ease;
 }
 
@@ -464,29 +466,27 @@ another way for animation border-bottom
     transform: translateX(0);
 }
 
-.featured-course .separator {
+.separator {
     min-width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     margin: 2rem;
-
 }
 
-.featured-course .separator span {
+.separator span {
     width: 30%;
     height: 2px;
     background-color: #c4c4c4;
 }
 
-.featured-course .separator h4 {
+.separator h4 {
     text-align: center;
     font-size: 1rem;
 }
 
 .featured-course-container {
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -561,7 +561,7 @@ another way for animation border-bottom
     line-height: 1.5;
     height: 43px;
     margin-bottom: 25px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 12px;
 }
 
@@ -575,7 +575,7 @@ another way for animation border-bottom
     overflow: hidden;
     position: relative;
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     padding-left: 12px;
     padding-bottom: 12px;
 }
@@ -587,11 +587,47 @@ another way for animation border-bottom
 .course-bottom-content {
     border-top: 2px solid #e5e5e5;
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #777777;
+}
+
+.newest-course {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.newest-course-container {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 83px;
+}
+
+.newest-course-container .fa-angle-right,
+.newest-course-container .fa-angle-left {
+    font-size: 36px;
+    padding-bottom: 10px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.newest-course {
+    overflow: hidden;
+    width: 100%;
+}
+.newest-course .course-container {
+    display: -webkit-box;
+    transition: transform 0.3s linear;
+    transform: translateX(0);
+    width: 100%;
 }
 
 /* ==================== dropdown ==================== */
@@ -894,7 +930,8 @@ another way for animation border-bottom
     left: 0 !important;
     bottom: 0 !important;
 }
-.shopping-cart-bottom{
+
+.shopping-cart-bottom {
     position: relative;
     width: 100%;
     bottom: 0;
@@ -904,7 +941,8 @@ another way for animation border-bottom
     flex-flow: column;
     margin-top: 10px;
 }
-.shopping-cart-total{
+
+.shopping-cart-total {
     border-top: 1px solid #e5e5e5 !important;
     text-align: center;
     font-size: 16px;
@@ -915,14 +953,16 @@ another way for animation border-bottom
     width: 90%;
     direction: rtl;
 }
-.shopping-cart-buttons{
+
+.shopping-cart-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: column;
     width: 100%;
 }
-.shopping-cart-buttons a{
+
+.shopping-cart-buttons a {
     width: 90% !important;
     margin: 0 0 10px 0 !important;
     padding: 8px 17px !important;
@@ -930,12 +970,15 @@ another way for animation border-bottom
     text-align: center;
     border-radius: 3px;
 }
-.shopping-cart-buttons a:first-child{
+
+.shopping-cart-buttons a:first-child {
     background-color: #adb5bd !important;
 }
-.shopping-cart-buttons a:not(:first-child){
+
+.shopping-cart-buttons a:not(:first-child) {
     background-color: #ffb606 !important;
 }
+
 /* ==================== responsive ==================== */
 
 @media screen and (max-width: 768px) {
@@ -978,7 +1021,7 @@ another way for animation border-bottom
         font-size: 1.25rem;
     }
 
-    .featured-course .separator h4 {
+    .separator h4 {
         font-size: 0.75rem;
     }
 
