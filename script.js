@@ -275,38 +275,59 @@ const addToCartIcons = document.querySelectorAll('.course .course-thumbnail a.ad
 
 cartIcon.addEventListener('click', () => {
     shoppingCartBox.classList.toggle('active')
-    updateCart()
 })
 
 
 function updateCart() {
+    // clearing all previous data
+    shoppingCartBox.querySelector('.shopping-cart-items').innerHTML = ""
+    // getting data from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length > 0) {
+        for (let item of cart) {
+            const newCourse = document.createElement('div')
+            newCourse.className = 'shopping-cart-item'
+            newCourse.setAttribute('id',item.id)
+            newCourse.innerHTML = `
+                                <i class="fas fa-times"></i>
+                                <img src="${item.imageSrc}" alt="${item.title}">
+                                <div class="cart-item-content">
+                                    <span class="item-name">${item.title}</span>
+                                    <span class="item-price">${item.price} تومان</span>
+                                </div>
+    `
+            shoppingCartBox.querySelector('.shopping-cart-items').appendChild(newCourse)
+        }
+    }
+
     let cartItemCloseIcons = shoppingCartBox.querySelectorAll('.shopping-cart-item i.fa-times')
     const itemsPrices = shoppingCartBox.querySelectorAll('.item-price')
     const cartNumber = topBar.querySelector('.cart-number')
     const cartNumberMobile = topBar.querySelector('.top-bar-items-mobile .cart-number')
     const cartNumberNav = navbar.querySelector('.studiare-cart-number')
 
-    // remove item by clicking x icon
+    // removing item by clicking x (close icon)
     cartItemCloseIcons.forEach(icon => {
         icon.addEventListener('click', (ev) => {
-            ev.target.parentElement.remove()
+            let cartItem = ev.target.parentElement
+            let itemId = cartItem.getAttribute('id')
+            cart = cart.filter(item => item.id !== itemId)
+            localStorage.setItem('cart', JSON.stringify(cart))
             updateCart()
         })
     })
 
-    // calculate total price
+    // calculating total price
     let sum = 0
     itemsPrices.forEach(item => {
         sum += Number(item.innerText.match(/\d+/))
     })
     shoppingCartTotal.innerText = `${sum} تومان`
 
-    // update cart number
+    // updating cart number
     cartNumber.innerText = itemsPrices.length
     cartNumberMobile.innerText = itemsPrices.length
     cartNumberNav.innerText = itemsPrices.length
-
-    // todo : use localStorage
 }
 
 updateCart()
@@ -320,10 +341,10 @@ addToCartIcons.forEach(icon => {
         addToCart(currentCourse)
         updateCart()
     })
-    // todo : use localStorage
 })
 
 function addToCart(course) {
+    const courseId = Math.floor(Math.random()*1000)
     const imageSrc = course.querySelector('img').src
     const title = course.querySelector('.course-content .course-title a').innerText
     let price = course.querySelector('.course-content .course-price').innerText
@@ -333,15 +354,8 @@ function addToCart(course) {
         price = Number(price)
     }
 
-    const newCourse = document.createElement('div')
-    newCourse.className = 'shopping-cart-item'
-    newCourse.innerHTML = `
-                                <i class="fas fa-times"></i>
-                                <img src="${imageSrc}" alt="${title}">
-                                <div class="cart-item-content">
-                                    <span class="item-name">${title}</span>
-                                    <span class="item-price">${price} تومان</span>
-                                </div>
-    `
-    shoppingCartBox.querySelector('.shopping-cart-items').appendChild(newCourse)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const newCourseObj = {'id': `id-${courseId}`, 'imageSrc': imageSrc, 'title': title, 'price': price}
+    cart.push(newCourseObj)
+    localStorage.setItem('cart', JSON.stringify(cart))
 }
