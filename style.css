@@ -505,7 +505,7 @@ another way for animation border-bottom
     transition: all 0.5s ease;
 }
 
-.course:hover {
+.featured-course .course:hover {
     cursor: pointer;
     transform: translateY(-10px);
 }
@@ -594,7 +594,7 @@ another way for animation border-bottom
     color: #777777;
 }
 
-.newest-course {
+.newest-courses {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -623,12 +623,14 @@ another way for animation border-bottom
     overflow: hidden;
     width: 100%;
 }
+
 .newest-course .course-container {
     display: -webkit-box;
     transition: transform 0.3s linear;
     transform: translateX(0);
     width: 100%;
 }
+
 
 /* ==================== dropdown ==================== */
 

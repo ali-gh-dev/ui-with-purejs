@@ -30,7 +30,7 @@ const cartIcon = document.querySelector('a.mini-cart-opener')
 const shoppingCartBox = document.querySelector('.shopping-cart-box')
 
 
-// Functions
+// ================== Functions ==================
 
 function showError(element, errorText) {
     element.parentElement.classList.add('error')
@@ -98,7 +98,8 @@ function toggleNavbarDropdown() {
 }
 
 
-// animation border-bottom (for header items)
+// ================== animation border-bottom (for header items) ==================
+
 const span = document.createElement('span')
 span.classList.add('highlight')
 document.body.appendChild(span)
@@ -112,7 +113,8 @@ menuItems.forEach(item => {
 })
 
 
-// dropdown (sub-nav)
+// ================== dropdown (sub-nav) ==================
+
 courses.addEventListener('mouseover', () => {
     dropdown.style.display = 'flex'
 })
@@ -121,7 +123,8 @@ dropdown.addEventListener('mouseleave', () => {
 })
 
 
-// login popup(modal)
+// ================== login popup(modal) ==================
+
 loginBtn.addEventListener('click', () => {
     // showing popup
     if (loginBtn.querySelector('span').innerText === 'ورود و ثبت نام') {
@@ -154,7 +157,8 @@ loginForm.addEventListener('submit', (ev) => {
 })
 
 
-// navbar
+// ================== navbar ==================
+
 hamburgerIcon.addEventListener('click', () => {
     navbar.classList.add('active')
     hamburgerIcon.style.display = 'none'
@@ -177,7 +181,8 @@ hamburgerCloseIcon.addEventListener('click', () => {
 })
 navbarDropdown.addEventListener('click', toggleNavbarDropdown)
 
-//top bar
+//================== top bar ==================
+
 userIcon.addEventListener('click', () => {
     // showing popup
     popup.style.display = 'flex'
@@ -185,7 +190,8 @@ userIcon.addEventListener('click', () => {
     document.body.style.overflow = 'hidden'
 })
 
-//sticky nav - feature courses - go to top
+//================== sticky nav - feature courses - go to top ==================
+
 window.addEventListener('scroll', () => {
     if (window.scrollY >= globalHeader.offsetHeight) {
         globalHeader.style.position = 'fixed'
@@ -209,7 +215,8 @@ window.addEventListener('scroll', () => {
 
 })
 
-// countdown
+// ================== countdown ==================
+
 function countdown() {
     const publishDate = new Date("7 Feb 2025")
     const currentDate = new Date()
@@ -227,7 +234,8 @@ function countdown() {
 countdown()
 setInterval(countdown, 1000)
 
-// voice search
+// ================== voice search ==================
+
 searchIcon.addEventListener('click', toggleSearchIcon)
 
 function toggleSearchIcon() {
@@ -262,12 +270,13 @@ function searchRecognition() {
     recognition.start()
 }
 
-// go to top
+// ================== go to top ==================
+
 goToTop.addEventListener('click', () => {
     window.scrollTo({top: 0, behavior: 'smooth'})
 })
 
-// shopping cart
+// ================== shopping cart ==================
 
 const shoppingCartTotal = shoppingCartBox.querySelector('.shopping-cart-total')
 
@@ -359,3 +368,12 @@ function addToCart(course) {
     cart.push(newCourseObj)
     localStorage.setItem('cart', JSON.stringify(cart))
 }
+
+// ================== infinity slider (newest courses) ==================
+
+const slider = document.querySelector('.course-container')
+const carousel = document.querySelector('.newest-course')
+const next = document.querySelector('.newest-course-container .fa-angle-right')
+const prev = document.querySelector('.newest-course-container .fa-angle-left')
+const courseItems = document.querySelectorAll('.newest-course-container .course')
+const courseWidth = window.getComputedStyle(courseItems[0]).getPropertyValue('width')
