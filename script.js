@@ -296,7 +296,7 @@ function updateCart() {
         for (let item of cart) {
             const newCourse = document.createElement('div')
             newCourse.className = 'shopping-cart-item'
-            newCourse.setAttribute('id',item.id)
+            newCourse.setAttribute('id', item.id)
             newCourse.innerHTML = `
                                 <i class="fas fa-times"></i>
                                 <img src="${item.imageSrc}" alt="${item.title}">
@@ -353,7 +353,7 @@ addToCartIcons.forEach(icon => {
 })
 
 function addToCart(course) {
-    const courseId = Math.floor(Math.random()*1000)
+    const courseId = Math.floor(Math.random() * 1000)
     const imageSrc = course.querySelector('img').src
     const title = course.querySelector('.course-content .course-title a').innerText
     let price = course.querySelector('.course-content .course-price').innerText
@@ -377,3 +377,28 @@ const next = document.querySelector('.newest-course-container .fa-angle-right')
 const prev = document.querySelector('.newest-course-container .fa-angle-left')
 const courseItems = document.querySelectorAll('.newest-course-container .course')
 const courseWidth = window.getComputedStyle(courseItems[0]).getPropertyValue('width')
+let direction;
+
+next.addEventListener('click', () => {
+    direction = -1
+    carousel.style.justifyContent = 'flex-start'
+    slider.style.transform = `translate(-${courseWidth})`
+})
+prev.addEventListener('click', () => {
+    direction = 1;
+    carousel.style.justifyContent = 'flex-end';
+    slider.style.transform = `translate(${courseWidth})`
+})
+slider.addEventListener('transitionend', () => {
+    if (direction === 1) {
+        slider.prepend(slider.lastElementChild)
+    } else {
+        slider.appendChild(slider.firstElementChild)
+    }
+    slider.style.transition = 'none';
+    slider.style.transform = 'translate(0)';
+    setTimeout(() => {
+        slider.style.transition = 'all 0.3s';
+    })
+}, false)
+
