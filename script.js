@@ -401,3 +401,14 @@ slider.addEventListener('transitionend', () => {
         slider.style.transition = 'all 0.3s';
     })
 }, false)
+
+// ================== comments ==================
+
+const comments = document.querySelectorAll('.comments-container .comment')
+const dotsContainer = document.querySelector('.dots-container')
+comments.forEach((comment,index) => {
+    const span = document.createElement('span')
+    span.classList.add('dots')
+    span.setAttribute('position',String(index))
+    dotsContainer.appendChild(span)
+})
