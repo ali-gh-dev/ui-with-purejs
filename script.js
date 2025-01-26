@@ -401,4 +401,3 @@ slider.addEventListener('transitionend', () => {
         slider.style.transition = 'all 0.3s';
     })
 }, false)
-
