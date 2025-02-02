@@ -218,7 +218,7 @@ window.addEventListener('scroll', () => {
 // ================== countdown ==================
 
 function countdown() {
-    const publishDate = new Date("7 Feb 2025")
+    const publishDate = new Date("27 Feb 2025")
     const currentDate = new Date()
     const totalTime = publishDate - currentDate
     const days = Math.floor(totalTime / (24 * 3600 * 1000))
@@ -405,10 +405,27 @@ slider.addEventListener('transitionend', () => {
 // ================== comments ==================
 
 const comments = document.querySelectorAll('.comments-container .comment')
+const commentsContainer = document.querySelector('.comments-container')
 const dotsContainer = document.querySelector('.dots-container')
-comments.forEach((comment,index) => {
+let commentWidth = window.getComputedStyle(comments[0]).getPropertyValue('width')
+commentWidth = Number(commentWidth.match(/\d+/))
+
+
+
+comments.forEach((comment, index) => {
     const span = document.createElement('span')
     span.classList.add('dots')
-    span.setAttribute('position',String(index))
+    span.setAttribute('position', String(index))
+    span.addEventListener('click', (ev) => {
+        let dotPosition = ev.target.getAttribute('position')
+        dotPosition = Number(dotPosition)
+        commentsContainer.style.transform = `translateX(${dotPosition * commentWidth}px)`
+        dotsContainer.querySelectorAll('.dots').forEach(dot => {
+            dot.style.opacity = '0.5'
+        })
+        ev.target.style.opacity = '1'
+    })
     dotsContainer.appendChild(span)
 })
+
+dotsContainer.querySelectorAll('.dots')[0].style.opacity = '1'

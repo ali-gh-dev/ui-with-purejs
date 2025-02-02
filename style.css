@@ -1010,6 +1010,7 @@ another way for animation border-bottom
     transform: translateX(0);
     width: 70%;
     direction: rtl;
+    /*overflow: hidden;*/
 }
 
 .comment {
@@ -1063,6 +1064,7 @@ another way for animation border-bottom
     opacity: 0.5;
     margin: 10px;
 }
+
 
 /* ==================== responsive ==================== */
 
