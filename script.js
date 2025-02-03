@@ -419,10 +419,8 @@ comments.forEach((comment, index) => {
     span.addEventListener('click', (ev) => {
         let dotPosition = ev.target.getAttribute('position')
         dotPosition = Number(dotPosition)
-        commentsContainer.style.transform = `translateX(${dotPosition * commentWidth}px)`
-        dotsContainer.querySelectorAll('.dots').forEach(dot => {
-            dot.style.opacity = '0.5'
-        })
+        commentsContainer.style.transform = `translateX(${dotPosition * commentWidth + 1}px)`
+        dotsContainer.querySelectorAll('.dots').forEach(dot => dot.style.opacity = '0.5')
         ev.target.style.opacity = '1'
     })
     dotsContainer.appendChild(span)

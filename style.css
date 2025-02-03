@@ -465,11 +465,11 @@ another way for animation border-bottom
 }
 
 .separator {
-    min-width: 80%;
+    width: 70%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem;
+    margin: 2rem auto;
 }
 
 .separator span {
@@ -995,9 +995,11 @@ another way for animation border-bottom
 /* ==================== comments ==================== */
 
 .comments {
-    width: 100%;
+    width: 70%;
     overflow: hidden;
     margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1008,9 +1010,20 @@ another way for animation border-bottom
     display: -webkit-box;
     transition: transform 0.3s linear;
     transform: translateX(0);
-    width: 70%;
+    width: 100%;
     direction: rtl;
     /*overflow: hidden;*/
+    transform: translate3d(0,0,0);
+    animation: moveComments 35s linear infinite;
+}
+/*.comments-container:hover{*/
+/*    animation-play-state: paused;*/
+/*}*/
+
+@keyframes moveComments {
+    100% {
+        transform: translateX(300%);
+    }
 }
 
 .comment {
