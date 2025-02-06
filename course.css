@@ -1,3 +1,26 @@
+/* ==================== go to top ==================== */
+.go-to-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    background-color: #6c757d;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    position: fixed;
+    left: 1.5rem;
+    bottom: 3rem;
+}
+
+.go-to-top:hover {
+    cursor: pointer;
+}
+
+.go-to-top.active {
+    opacity: 1;
+}
 /* ==================== page title ==================== */
 
 .page-title {
@@ -50,11 +73,13 @@
     flex-flow: row !important;
     padding-top: 50px !important;
     align-items: end !important;
-    justify-content: center !important;
+    /*justify-content: center !important;*/
+    justify-content: start !important;
 }
 
 .course-row.fixed {
-    flex-flow: column !important;
+    /*flex-flow: column !important;*/
+    flex-flow: row !important;
 }
 
 .course-info {
@@ -511,6 +536,20 @@ footer .row {
 
 
 /* ==================== responsive ==================== */
+
+@media screen and (max-width: 600px) {
+    .waves {
+        height: 16.6px;
+        margin-top: -21.5px;
+    }
+
+    .yellow {
+        margin-top: -25px;
+    }
+    footer {
+        margin-top: -7.6px;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .page-title {

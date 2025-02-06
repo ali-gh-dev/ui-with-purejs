@@ -1081,6 +1081,18 @@ another way for animation border-bottom
 
 /* ==================== responsive ==================== */
 
+@media screen and (max-width: 600px) {
+    .featured-course {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .course {
+        width: 80%;
+        margin-bottom: 2rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
 
     .global-header .nav-menu {
@@ -1127,18 +1139,6 @@ another way for animation border-bottom
 
     .course {
         width: 45%;
-        margin-bottom: 2rem;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .featured-course {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .course {
-        width: 80%;
         margin-bottom: 2rem;
     }
 }
