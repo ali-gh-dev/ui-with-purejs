@@ -7,7 +7,7 @@ const popup = document.querySelector('.popup')
 const popupContent = document.querySelector('.popup-content')
 const closePopupBtn = document.querySelector('.popup i')
 const loginForm = document.querySelector('#login-form')
-const recaptcha = document.querySelector('.g-recaptcha')
+// const recaptcha = document.querySelector('.g-recaptcha')
 const hamburgerIcon = document.querySelector('.hamburger-menu .open-menu')
 const hamburgerCloseIcon = document.querySelector('.hamburger-menu .close-menu')
 const navbar = document.querySelector('.nav')
@@ -24,7 +24,7 @@ const cartIcon = document.querySelector('a.mini-cart-opener')
 const shoppingCartBox = document.querySelector('.shopping-cart-box')
 const courseContent = document.querySelector('.course-content')
 const courseDetailInfo = document.querySelector('.course-detail-info')
-const courseInfo = document.querySelector('.course-info')
+// const courseInfo = document.querySelector('.course-info')
 
 // ================== Functions ==================
 
@@ -34,16 +34,16 @@ function showError(element, errorText) {
     return false
 }
 
-function checkRecaptcha() {
-    let response = grecaptcha.getResponse()
-    if (response.length === 0) {
-        showError(recaptcha, 'من ربات نیستم را تیک بزنید')
-    } else {
-        recaptcha.parentElement.querySelector('small').innerText = ''
-        popup.style.display = 'none'
-        loginBtn.querySelector('span').innerText = 'حساب کاربری'
-    }
-}
+// function checkRecaptcha() {
+//     let response = grecaptcha.getResponse()
+//     if (response.length === 0) {
+//         showError(recaptcha, 'من ربات نیستم را تیک بزنید')
+//     } else {
+//         recaptcha.parentElement.querySelector('small').innerText = ''
+//         popup.style.display = 'none'
+//         loginBtn.querySelector('span').innerText = 'حساب کاربری'
+//     }
+// }
 
 function validateLoginForm() {
     const emailField = document.getElementById('email')
@@ -67,8 +67,8 @@ function validateLoginForm() {
         passwordField.parentElement.className = "form-control success"
     }
 
-    let condition1 = emailField.parentElement.classList.contains('success')
-    let condition2 = passwordField.parentElement.classList.contains('success')
+    // let condition1 = emailField.parentElement.classList.contains('success')
+    // let condition2 = passwordField.parentElement.classList.contains('success')
     // i commented this part temporarily (for increasing speed)
     // if (condition1 && condition2) {
     //     checkRecaptcha()
@@ -244,23 +244,23 @@ function toggleSearchIcon() {
     }
 }
 
-function searchRecognition() {
-    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    const recognition = new SpeechRecognition()
-    recognition.lang = "fa-IR"
-    recognition.interimResults = true
-    recognition.addEventListener('result', ev => {
-        const transcript = Array.from(ev.results)
-            .map(item => item[0])
-            .map(item => item.transcript)
-            .join("")
-        if (ev.results[0].isFinal) {
-            searchInput.value = transcript
-        }
-    })
-    recognition.addEventListener('end', recognition.start)
-    recognition.start()
-}
+// function searchRecognition() {
+//     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+//     const recognition = new SpeechRecognition()
+//     recognition.lang = "fa-IR"
+//     recognition.interimResults = true
+//     recognition.addEventListener('result', ev => {
+//         const transcript = Array.from(ev.results)
+//             .map(item => item[0])
+//             .map(item => item.transcript)
+//             .join("")
+//         if (ev.results[0].isFinal) {
+//             searchInput.value = transcript
+//         }
+//     })
+//     recognition.addEventListener('end', recognition.start)
+//     recognition.start()
+// }
 
 // ================== go to top ==================
 
@@ -361,6 +361,44 @@ function addToCart(course) {
     localStorage.setItem('cart', JSON.stringify(cart))
 }
 
-// ============================================
+// ================== magnifier ==================
 
+/* magnifiy */
+(function(){
+    const picCourse = document.querySelector('.course-info .pic-course')
+    const img = picCourse.querySelector('img')
+    const glass = document.createElement('div')
+    const glassDimensions = 250;
+    let isVisible = false;
 
+    glass.classList.add('glass');
+    glass.style.width = `${glassDimensions}px`
+    glass.style.height = `${glassDimensions}px`
+    glass.style.backgroundImage = `url(${img.src})`
+    picCourse.append(glass)
+
+    img.addEventListener('mouseover',function(){
+        glass.style.display = 'block'
+        isVisible = true
+    })
+    img.addEventListener('mouseout',function(){
+        glass.style.display = 'none'
+        isVisible = false
+    })
+    picCourse.addEventListener('mousemove',function(evt){
+        if(isVisible){
+            const mouseX = evt.clientX
+            const mouseY = evt.clientY;
+            const imgCoordinates = img.getBoundingClientRect();
+            const{left,top} = imgCoordinates;
+            //console.log(left,top)
+            const bgX = 100 *(mouseX -left)/img.offsetWidth;
+            const bgY = 100 *(mouseY -top)/img.offsetHeight;
+            glass.style.left = `${mouseX -left-glassDimensions/2}px`
+            glass.style.top = `${mouseY -top-glassDimensions/2}px`
+            glass.style.backgroundPosition = `${bgX}% ${bgY}%`
+
+        }
+    })
+})();
+/* magnifiy */
