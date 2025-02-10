@@ -378,9 +378,10 @@
     margin-left: 5px;
 }
 
-.cousrse-section-title i {
+.course-section-title i {
     position: absolute;
     left: 40px;
+    cursor: pointer;
 }
 
 .deactive {
