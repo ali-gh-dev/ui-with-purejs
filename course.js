@@ -205,25 +205,6 @@ window.addEventListener('scroll', () => {
         goToTop.classList.remove('active')
     }
 
-
-    if (window.scrollY > courseDetailInfo.parentElement.offsetTop && window.scrollY < courseContent.offsetHeight + 50) {
-        courseDetailInfo.style.position = 'fixed';
-        courseDetailInfo.style.left = '50px';
-        courseDetailInfo.style.top = '40px';
-
-        courseDetailInfo.parentElement.classList.add('fixed')
-
-    } else if (window.scrollY >= courseContent.offsetHeight + 50) {
-        courseDetailInfo.style.position = 'relative';
-        courseDetailInfo.parentElement.classList.remove('fixed')
-        // courseDetailInfo.style.top = `${courseInfo.offsetHeight - courseDetailInfo.offsetHeight}px`
-        courseDetailInfo.parentElement.style.justifyContent = 'space-between'
-
-    } else {
-        courseDetailInfo.style.position = 'relative';
-        courseDetailInfo.parentElement.classList.remove('fixed')
-    }
-
 })
 
 // ================== voice search ==================
@@ -391,7 +372,6 @@ function addToCart(course) {
             const mouseY = evt.clientY;
             const imgCoordinates = img.getBoundingClientRect();
             const{left,top} = imgCoordinates;
-            //console.log(left,top)
             const bgX = 100 *(mouseX -left)/img.offsetWidth;
             const bgY = 100 *(mouseY -top)/img.offsetHeight;
             glass.style.left = `${mouseX -left-glassDimensions/2}px`
@@ -402,3 +382,22 @@ function addToCart(course) {
     })
 })();
 /* magnifiy */
+
+// ================== study mode ==================
+
+const studyModeBtn = document.querySelector('.study-mode-btn')
+const courseInfo = document.querySelector('.course-info')
+
+let isActive = false
+studyModeBtn.addEventListener('click',function(){
+    isActive = !isActive;
+    if(isActive){
+        courseInfo.style.width = '80%';
+        courseDetailInfo.style.display = 'none'
+        courseInfo.parentElement.style.justifyContent = 'center'
+    }else{
+        courseInfo.style.width = '60%';
+        courseDetailInfo.style.display = 'block'
+        courseInfo.parentElement.style.justifyContent = 'start'
+    }
+})
