@@ -25,6 +25,7 @@ const shoppingCartBox = document.querySelector('.shopping-cart-box')
 const courseContent = document.querySelector('.course-content')
 const courseDetailInfo = document.querySelector('.course-detail-info')
 // const courseInfo = document.querySelector('.course-info')
+const studyMode = document.querySelector('.study-mode')
 
 // ================== Functions ==================
 
@@ -205,6 +206,20 @@ window.addEventListener('scroll', () => {
         goToTop.classList.remove('active')
     }
 
+    // fixing study-mode-btn
+    if (window.scrollY > courseContent.offsetTop - 100 && window.scrollY < courseInfo.offsetHeight + 50) {
+        studyMode.style.position = 'fixed'
+        studyMode.style.right = '10px'
+        studyMode.style.top = '100px'
+    } else if (window.scrollY < courseContent.offsetTop - 100) {
+        studyMode.style.position = 'absolute'
+        studyMode.style.right = '-50px'
+        studyMode.style.top = '0px'
+    } else if (window.scrollY > courseInfo.offsetHeight + 50) {
+        studyMode.style.position = 'absolute'
+        studyMode.style.right = '-50px'
+        studyMode.style.top = `${courseContent.offsetHeight - 40}px`
+    }
 })
 
 // ================== voice search ==================
@@ -345,7 +360,7 @@ function addToCart(course) {
 // ================== magnifier ==================
 
 /* magnifiy */
-(function(){
+(function () {
     const picCourse = document.querySelector('.course-info .pic-course')
     const img = picCourse.querySelector('img')
     const glass = document.createElement('div')
@@ -358,24 +373,24 @@ function addToCart(course) {
     glass.style.backgroundImage = `url(${img.src})`
     picCourse.append(glass)
 
-    img.addEventListener('mouseover',function(){
+    img.addEventListener('mouseover', function () {
         glass.style.display = 'block'
         isVisible = true
     })
-    img.addEventListener('mouseout',function(){
+    img.addEventListener('mouseout', function () {
         glass.style.display = 'none'
         isVisible = false
     })
-    picCourse.addEventListener('mousemove',function(evt){
-        if(isVisible){
+    picCourse.addEventListener('mousemove', function (evt) {
+        if (isVisible) {
             const mouseX = evt.clientX
             const mouseY = evt.clientY;
             const imgCoordinates = img.getBoundingClientRect();
-            const{left,top} = imgCoordinates;
-            const bgX = 100 *(mouseX -left)/img.offsetWidth;
-            const bgY = 100 *(mouseY -top)/img.offsetHeight;
-            glass.style.left = `${mouseX -left-glassDimensions/2}px`
-            glass.style.top = `${mouseY -top-glassDimensions/2}px`
+            const {left, top} = imgCoordinates;
+            const bgX = 100 * (mouseX - left) / img.offsetWidth;
+            const bgY = 100 * (mouseY - top) / img.offsetHeight;
+            glass.style.left = `${mouseX - left - glassDimensions / 2}px`
+            glass.style.top = `${mouseY - top - glassDimensions / 2}px`
             glass.style.backgroundPosition = `${bgX}% ${bgY}%`
 
         }
@@ -389,13 +404,13 @@ const studyModeBtn = document.querySelector('.study-mode-btn')
 const courseInfo = document.querySelector('.course-info')
 
 let isActive = false
-studyModeBtn.addEventListener('click',function(){
+studyModeBtn.addEventListener('click', function () {
     isActive = !isActive;
-    if(isActive){
+    if (isActive) {
         courseInfo.style.width = '80%';
         courseDetailInfo.style.display = 'none'
         courseInfo.parentElement.style.justifyContent = 'center'
-    }else{
+    } else {
         courseInfo.style.width = '60%';
         courseDetailInfo.style.display = 'block'
         courseInfo.parentElement.style.justifyContent = 'start'
@@ -405,19 +420,20 @@ studyModeBtn.addEventListener('click',function(){
 // ================== accordian ==================
 
 const accordiansIcon = document.querySelectorAll('.course-section .fa-chevron-down')
-accordiansIcon.forEach(item=>item.addEventListener('click',accordianToggle))
-function accordianToggle(event){
+accordiansIcon.forEach(item => item.addEventListener('click', accordianToggle))
+
+function accordianToggle(event) {
     const icon = event.target
-   const courseSection = icon.parentElement.parentElement
-   const panelGroup = courseSection.querySelector('.panel-group')
-   const height = window.getComputedStyle(panelGroup).getPropertyValue('height')
-   if(height==='0px'){
-       panelGroup.style.height = 'auto'
-       panelGroup.style.transform = 'scaleY(1)'
-       icon.style.transform = 'rotate(180deg)'
-   }else{
-    panelGroup.style.height = '0'
-    panelGroup.style.transform = 'scaleY(0)'
-    icon.style.transform = 'rotate(360deg)'
-   }
+    const courseSection = icon.parentElement.parentElement
+    const panelGroup = courseSection.querySelector('.panel-group')
+    const height = window.getComputedStyle(panelGroup).getPropertyValue('height')
+    if (height === '0px') {
+        panelGroup.style.height = 'auto'
+        panelGroup.style.transform = 'scaleY(1)'
+        icon.style.transform = 'rotate(180deg)'
+    } else {
+        panelGroup.style.height = '0'
+        panelGroup.style.transform = 'scaleY(0)'
+        icon.style.transform = 'rotate(360deg)'
+    }
 }
